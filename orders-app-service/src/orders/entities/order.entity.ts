@@ -1,7 +1,7 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -9,7 +9,7 @@ import { OrderStatus } from '../orderStatus';
 
 @Entity('orders')
 export class Order {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @CreateDateColumn()

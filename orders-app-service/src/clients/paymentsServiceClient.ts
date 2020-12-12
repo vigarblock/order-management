@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-const HOSTNAME = 'http://localhost:3001';
+import { env } from 'process';
+
+const HOSTNAME = env.PAYMENTS_SVC_HOSTNAME;
 
 @Injectable()
 export class PaymentsServiceClient {

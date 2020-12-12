@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "orders-app-svc-deployment"
+  namespace: {{ .Values.namespace }}
+  labels:
+    name: "orders-app-svc-deployment"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      name: "orders-app-svc"
+  template:
+    metadata:
+      labels:
+        name: "orders-app-svc"
+    spec:
+      containers:
+      - name: orders-app-svc
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}     
+        ports:
+        - containerPort: {{ .Values.service.containerPort }}
+        envFrom:
+        - configMapRef:
+            name: orders-app-svc-config
+        - secretRef:
+            name: orders-app-svc-secret

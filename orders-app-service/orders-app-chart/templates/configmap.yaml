@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "orders-app-svc-config"
+  namespace: {{ .Values.namespace }}
+data:
+  PAYMENTS_SVC_HOSTNAME: "{{ .Values.config.paymentsSvcHostname }}"
+  DATABASE_HOST: "{{ .Values.config.databaseHost }}"
+  DATABASE_PORT: "{{ .Values.config.databasePort }}"
+  DATABASE_NAME: "{{ .Values.config.databaseName }}"
+  DATABASE_USERNAME: "{{ .Values.config.databaseUsername }}"

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 
 import { OrderStatus } from './orderStatus';
 import { Order } from './entities/order.entity';
@@ -29,6 +30,7 @@ export class OrdersService {
     const initialStatus = OrderStatus.Created;
 
     const order = new Order();
+    order.id = uuidv4();
     order.userId = userId;
     order.status = initialStatus;
     order.amount = amount;
