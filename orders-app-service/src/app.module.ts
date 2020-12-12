@@ -15,6 +15,7 @@ import { env } from 'process';
       database: env.DATABASE_NAME,
       entities: ['.src/**/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}'],
       synchronize: true,
+      logging: true,
     }),
   ],
 })

@@ -12,7 +12,7 @@ export class PaymentsServiceClient {
     amount: number,
   ) {
     try {
-      const response = await axios.post(`${HOSTNAME}/payments`, {
+      const response = await axios.post(`http://${HOSTNAME}/payments`, {
         userId,
         paymentMethod,
         amount,
@@ -20,8 +20,8 @@ export class PaymentsServiceClient {
 
       return { status: response.data.status };
     } catch (error) {
-      // Ideally, error should be logged.
-      // So that additional information does not need to bubble up to consumer.
+      // Rethrowing with message only to prevent additional info bubbling up.
+      // Ideally, full error should be logged for traceability.
       throw new Error(error.message);
     }
   }

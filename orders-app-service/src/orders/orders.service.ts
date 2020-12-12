@@ -71,8 +71,6 @@ export class OrdersService {
       order.amount,
     );
 
-    console.log('Payment response', response);
-
     let orderStatus: OrderStatus;
     if (response.status === 'confirmed') {
       orderStatus = OrderStatus.Confirmed;
@@ -91,14 +89,12 @@ export class OrdersService {
     await this.updateOrderStatus(order.id, orderStatus);
 
     if (orderStatus === OrderStatus.Confirmed) {
-      console.log('Submitting event to confirm');
       this.ordersEventManager.publish(confirmedEvent, order);
     }
   }
 
   private async processConfirmedOrder(order: Order) {
     await this.delay(deliverDelayMs);
-    console.log('Confirming order');
     await this.updateOrderStatus(order.id, OrderStatus.Delivered);
   }
 
