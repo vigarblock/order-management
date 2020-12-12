@@ -1,0 +1,10 @@
+replicaCount: 1
+namespace: default
+
+image:
+  repository: setel-payments-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  containerPort: 80

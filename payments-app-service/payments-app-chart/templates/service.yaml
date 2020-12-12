@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payments-app-svc
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    name: payments-app-svc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: {{ .Values.service.containerPort }}
+  type: ClusterIP
+

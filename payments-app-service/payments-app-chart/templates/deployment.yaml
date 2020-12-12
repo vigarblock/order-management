@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "payments-app-svc-deployment"
+  namespace: {{ .Values.namespace }}
+  labels:
+    name: "payments-app-svc-deployment"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      name: "payments-app-svc"
+  template:
+    metadata:
+      labels:
+        name: "payments-app-svc"
+    spec:
+      containers:
+      - name: payments-app-svc
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}     
+        ports:
+        - containerPort: {{ .Values.service.containerPort }}
