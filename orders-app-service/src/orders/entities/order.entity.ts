@@ -19,7 +19,7 @@ export class Order {
   updatedDate: Date;
 
   @Column()
-  customerId: string;
+  userId: string;
 
   @Column()
   status: OrderStatus;

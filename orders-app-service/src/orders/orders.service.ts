@@ -20,11 +20,11 @@ export class OrdersService {
     this.setupOrdersEventHandler();
   }
 
-  async createOrder(customerId: string, amount: number) {
+  async createOrder(userId: string, amount: number) {
     const initialStatus = OrderStatus.Created;
 
     const order = new Order();
-    order.customerId = customerId;
+    order.userId = userId;
     order.status = initialStatus;
     order.amount = amount;
 

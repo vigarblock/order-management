@@ -20,12 +20,12 @@ export class OrdersController {
 
   @Post()
   async createOrder(
-    @Body('customerId') customerId: string,
+    @Body('userId') userId: string,
     @Body('amount') amount: number,
   ) {
-    if (!customerId) {
+    if (!userId) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "customerId"',
+        'Failed to find a value for required parameter "userId"',
       );
     }
 
@@ -36,7 +36,7 @@ export class OrdersController {
     }
 
     try {
-      const response = await this.ordersService.createOrder(customerId, amount);
+      const response = await this.ordersService.createOrder(userId, amount);
       return response;
     } catch (error) {
       throw new InternalServerErrorException(
