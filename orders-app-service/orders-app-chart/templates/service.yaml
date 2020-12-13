@@ -11,5 +11,5 @@ spec:
       port: 80
       targetPort: {{ .Values.service.containerPort }}
       nodePort: {{ .Values.service.nodePort }}
-  type: NodePort
+  type: LoadBalancer
 

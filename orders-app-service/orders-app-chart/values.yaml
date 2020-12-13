@@ -2,7 +2,7 @@ replicaCount: 1
 namespace: default
 
 image:
-  repository: setel-orders-app
+  repository: gcr.io/setel-298305/setel-orders-app
   tag: latest
   pullPolicy: IfNotPresent
 
