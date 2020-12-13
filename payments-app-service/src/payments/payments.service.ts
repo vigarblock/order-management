@@ -13,7 +13,7 @@ export class PaymentsService {
     amount: number,
   ): PaymentResponse {
     // Ideally, this transaction should be saved in a payments requests DB table.
-    // I have not done so for brevity.
+    // I have not done to keep the scope simple
     const paymentRequestId = uuidv4();
     const paymentPayload = this.getPaymentPayload(userId, paymentMethod);
     const isSuccessful = this.paymentsClient.processPayment(
