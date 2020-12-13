@@ -8,11 +8,11 @@ The solution contains 2 microservices, Orders-App-Service and Payments-App-Servi
 
 [Source Code](./orders-app-service)
 
-- Accesible publicly at: http://34.121.51.84:30000/orders
+- Accesible publicly at: http://34.121.51.84/orders
 - API with 3 endpoints to meet requirements.
-   1. Create Order - POST - http://34.121.51.84:30000/orders
-   2. Cancel Order - PATCH - http://34.121.51.84:30000/orders/{orderId}/cancel
-   3. Get Order status - GET - http://34.121.51.84:30000/orders/{orderId}/status
+   1. Create Order - POST - http://34.121.51.84/orders
+   2. Cancel Order - PATCH - http://34.121.51.84/orders/{orderId}/cancel
+   3. Get Order status - GET - http://34.121.51.84/orders/{orderId}/status
 - Uses Postgresql database. Repository design pattern implemented together with TypeORM integration.
 - Helm chart for Kubernetes package management. The Postgresql database is packaged as a dependency chart of the parent chart for coherent deployment.
 - Exposed as LoadBalancer Kubernetes service type for external consumption from outside of Kubernetes cluster.
