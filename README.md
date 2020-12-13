@@ -15,7 +15,7 @@ The solution contains 2 microservices, Orders-App-Service and Payments-App-Servi
 - Exposed as LoadBalancer Kubernetes service type for external consumption from outside of Kubernetes cluster.
 
 ### Payments-App-Service
-[Source Code]()
+[Source Code](./payments-app-service)
 
 - API with single endpoint to accept mocked payment request.
 - Helm chart for Kubernetes package management. No dependencies.
@@ -23,7 +23,7 @@ The solution contains 2 microservices, Orders-App-Service and Payments-App-Servi
 
 
 ### Infrastructure provisioning
-[Source Code]()
+[Source Code](./operations)
 
 GCP has been chosen as cloud provider for this project. Terraform templates configured for infrastructure as code management. 
 
