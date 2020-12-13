@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
-import { FakePaymentsClient } from 'src/clients/fakePaymentsClient';
+import { FakePaymentsClient } from '../clients/fakePaymentsClient';
 import { PaymentResponse } from './DTO/paymentResponse';
 
 @Injectable()

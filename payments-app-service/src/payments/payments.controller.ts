@@ -19,25 +19,25 @@ export class PaymentsController {
   ) {
     if (!userId) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "userId"',
+        "Failed to find a value for required parameter 'userId'",
       );
     }
 
     if (!paymentMethod) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "paymentMethod"',
+        "Failed to find a value for required parameter 'paymentMethod'",
       );
     }
 
     if (!amount) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "amount"',
+        "Failed to find a value for required parameter 'amount'",
       );
     }
 
     if (isNaN(amount)) {
       throw new BadRequestException(
-        'Invalid value provided for parameter "amount"',
+        "Invalid value provided for parameter 'amount'",
       );
     }
 
@@ -49,8 +49,9 @@ export class PaymentsController {
       );
       return response;
     } catch (error) {
+      const details = error.message;
       throw new InternalServerErrorException(
-        `Unexpected failure occurred when creating an order. Details: ${error.messsage}`,
+        `Unexpected failure occurred when creating an order. Details: ${details}`,
       );
     }
   }
