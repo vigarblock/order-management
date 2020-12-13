@@ -8,7 +8,7 @@ import { Order } from './entities/order.entity';
 import { OrderNotFoundException } from './errors/orderNotFoundException';
 import { OrdersEventManager } from './ordersEventManager';
 import { OrderDTO } from './DTO/OrderDTO';
-import { PaymentsServiceClient } from 'src/clients/paymentsServiceClient';
+import { PaymentsServiceClient } from '../clients/paymentsServiceClient';
 
 const createdEvent = 'created';
 const confirmedEvent = 'confirmed';
@@ -37,6 +37,8 @@ export class OrdersService {
 
     await this.ordersRepository.insert(order);
 
+    // Using the pub/sub pattern to avoid holding up the API request.
+    // Let subscribers of events handle them in the background.
     this.ordersEventManager.publish(createdEvent, order);
 
     return new OrderDTO(

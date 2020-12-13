@@ -25,13 +25,19 @@ export class OrdersController {
   ) {
     if (!userId) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "userId"',
+        "Failed to find a value for required parameter 'userId'",
       );
     }
 
     if (!amount) {
       throw new BadRequestException(
-        'Failed to find a value for required parameter "amount"',
+        "Failed to find a value for required parameter 'amount'",
+      );
+    }
+
+    if (isNaN(amount)) {
+      throw new BadRequestException(
+        "Invalid value provided for parameter 'amount'",
       );
     }
 
@@ -39,8 +45,9 @@ export class OrdersController {
       const response = await this.ordersService.createOrder(userId, amount);
       return response;
     } catch (error) {
+      const details = error.message;
       throw new InternalServerErrorException(
-        `Unexpected failure occurred when creating an order. Details: ${error.messsage}`,
+        `Unexpected failure occurred when creating an order. Details: ${details}`,
       );
     }
   }
@@ -53,12 +60,13 @@ export class OrdersController {
       const orderStatus = await this.ordersService.getOrderStatus(orderId);
       return { orderStatus };
     } catch (error) {
+      const message = error.message;
       if (error instanceof OrderNotFoundException) {
-        throw new NotFoundException(error.message);
+        throw new NotFoundException(message);
       }
 
       throw new InternalServerErrorException(
-        `Unexpected failure occurred when creating an order. Details: ${error.messsage}`,
+        `Unexpected failure occurred when creating an order. Details: ${message}`,
       );
     }
   }
@@ -71,12 +79,13 @@ export class OrdersController {
       const orderStatus = await this.ordersService.cancelOrder(orderId);
       return { orderStatus };
     } catch (error) {
+      const message = error.message;
       if (error instanceof OrderNotFoundException) {
-        throw new NotFoundException(error.message);
+        throw new NotFoundException(message);
       }
 
       throw new InternalServerErrorException(
-        `Unexpected failure occurred when creating an order. Details: ${error.messsage}`,
+        `Unexpected failure occurred when creating an order. Details: ${message}`,
       );
     }
   }
@@ -84,7 +93,7 @@ export class OrdersController {
   private validateOrderId(orderId: string) {
     if (!uuidValidate(orderId)) {
       throw new BadRequestException(
-        `The provided Order ID: "${orderId}" is invalid`,
+        `The provided Order ID: '${orderId}' is invalid`,
       );
     }
   }

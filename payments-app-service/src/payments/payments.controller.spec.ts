@@ -129,7 +129,7 @@ describe('PaymentsController', () => {
       // Assert
       expect(caughtError.status).toEqual(500);
       expect(caughtError.message).toEqual(
-        'Unexpected failure occurred when creating an order. Details: Simulated service failure',
+        'Unexpected failure occurred when processing payment. Details: Simulated service failure',
       );
     });
 

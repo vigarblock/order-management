@@ -51,7 +51,7 @@ export class PaymentsController {
     } catch (error) {
       const details = error.message;
       throw new InternalServerErrorException(
-        `Unexpected failure occurred when creating an order. Details: ${details}`,
+        `Unexpected failure occurred when processing payment. Details: ${details}`,
       );
     }
   }

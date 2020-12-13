@@ -4,7 +4,7 @@ import { OrdersService } from './orders.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Order } from './entities/order.entity';
 import { OrdersEventManager } from './ordersEventManager';
-import { PaymentsServiceClient } from 'src/clients/paymentsServiceClient';
+import { PaymentsServiceClient } from '../clients/paymentsServiceClient';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order])],
